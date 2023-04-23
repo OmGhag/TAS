@@ -17,23 +17,27 @@ const getUsers = (request, response) => {
       if (error) {
         throw error
         }
+        if (results.rows.length === 0) {
+          getUserById(request, response);
+        }
       response.status(200).json(results.rows)
     })
   }
   const getUserById = (request, response) => {
-    const { FROM_DATE, FROM_TIME, TO_TIME, T_CODE } = request.body;
+    const { FROM_DATE, TO_DATE , FROM_TIME, TO_TIME, T_CODE } = request.body;
     const d = new Date(FROM_DATE);
     const tablename = T_CODE + "_" + weekday[d.getDay()];
     
-    pool.query('SELECT * FROM $1:name WHERE FROM_TIME=$2 AND TO_TIME=$3', [tablename, FROM_TIME, TO_TIME], (error, results) => {
+    const query = `SELECT AVAILABLE,LOC FROM ${tablename} WHERE FROM_TIME>=$1 AND TO_TIME<=$2`;
+  
+    pool.query(query, [FROM_TIME, TO_TIME], (error, results) => {
       if (error) {
         throw error;
       }
       response.status(200).json(results.rows);
-    });
-    
-    console.log(tablename);
+    });  
   }
+  
   
   
   const createUser = (request, response) => {
