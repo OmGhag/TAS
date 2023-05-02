@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>PORTAL</title>
+	  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"> 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<link rel="stylesheet" href="../public/style/style.css">
+
+	</head>
+	<header class="title"><h1>TEACHER AVAILABILITY PORTAL</h1></header>
+	<body>
+	<!-- <section class="ftco-section"> -->
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="elegant-calencar d-md-flex">
+						<div class="wrap-header d-flex align-items-center">
+				      <p id="reset">reset</p>
+			        <div id="header" class="p-0">
+		            <div class="pre-button d-flex align-items-center justify-content-center"><i class="fa fa-chevron-left"></i></div>
+		            <div class="head-info">
+		                <div class="head-day"></div>
+		                <div class="head-month"></div>
+		            </div>
+		            <div class="next-button d-flex align-items-center justify-content-center"><i class="fa fa-chevron-right"></i></div>
+			        </div>
+			      </div>
+			      <div class="calendar-wrap">
+			        <table id="calendar">
+		            <thead>
+		                <tr>
+		                    <th>Sun</th>
+		                    <th>Mon</th>
+		                    <th>Tue</th>
+		                    <th>Wed</th>
+		                    <th>Thu</th>
+		                    <th>Fri</th>
+		                    <th>Sat</th>
+		                </tr>
+		            </thead>
+		            <tbody>
+	                <tr>
+	                  <td></td>
+	                  <td></td>
+	                  <td></td>
+	                  <td></td>
+	                  <td></td>
+	                  <td></td>
+	                  <td></td>
+	                </tr>
+	                <tr>
+	                  <td></td>
+	                  <td></td>
+	                  <td></td>
+	                  <td></td>
+	                  <td></td>
+	                  <td></td>
+	                  <td></td>
+	                </tr>
+	                <tr>
+	                  <td></td>
+	                  <td></td>
+	                  <td></td>
+	                  <td></td>
+	                  <td></td>
+	                  <td></td>
+	                  <td></td>
+	                </tr>
+	                <tr>
+	                  <td></td>
+	                  <td></td>
+	                  <td></td>
+	                  <td></td>
+	                  <td></td>
+	                  <td></td>
+	                  <td></td>
+	                </tr>
+	                <tr>
+	                  <td></td>
+	                  <td></td>
+	                  <td></td>
+	                  <td></td>
+	                  <td></td>
+	                  <td></td>
+	                  <td></td>
+	                </tr>
+	                <tr>
+	                  <td></td>
+	                  <td></td>
+	                  <td></td>
+	                  <td></td>
+	                  <td></td>
+	                  <td></td>
+	                  <td></td>
+	                </tr>
+		            </tbody>
+			        </table>
+			      </div>
+			    </div>
+				</div>
+			</div>
+
+
+			<div id="teacher-form">
+				<h2>Teacher Availability Form</h2>
+				 <form>
+				   <!-- <label for="date">Date:</label>
+				   <input type="date" id="date" name="date"> -->
+			   
+				   <label for="teacher-select">Select a teacher:</label>
+				   <select id="teacher-select" name="teacher-select" required>
+					 <option value="">Select a teacher</option>
+					 <option value="a">ALL</option>
+					 <option value="b">Sachin Bojewar</option>
+					 <option value="c">S.A.Patekar</option>
+					 <option value="d">Umesh Kulkarni</option>
+					 <option value="e">Sachin Deshpande</option>
+					 <option value="f">Mandar Sohani</option>
+					 <option value="g">Pankaj Vanwari</option>
+					 <option value="h">Kavita Shirsat</option>
+					 <option value="i">Avinash Shrivas</option>
+					 <option value="j">Sanjeev Dwivedi</option>
+					 <option value="k">Ravindra Sangle</option>
+					 <option value="l">Sneha Annappanavar</option>
+					 <option value="m">Suvarna Bhat</option>
+					 <option value="n">Amit Nerurkar</option>
+					 <option value="o">Suja Jayachandran</option>
+					 <option value="p">Swapnil Sonawane</option>
+					 <option value="q">Divya Surve</option>
+					 <option value="r">Snehal Andhare</option>
+					 <option value="s">Prakash Parmar</option>
+					 <option value="t">Amit Aylani</option>
+					 <!-- <option value="u">ewnce</option> -->
+					 <!-- Add more options for each teacher name -->
+				   </select>
+			   <div class="tmslots">
+				   <label for="from-time">From:</label>
+				   <select id="from-time" name="from-time" required>
+					 <option value="">Select time slot</option>
+					 <option value="9:00 AM">9:00</option>
+					 <option value="10:00 AM">10:00</option>
+					 <option value="11:00 AM">11:00</option>
+					 <option value="12:00 PM">12:00</option>
+					 <option value="1:00 PM">13:00</option>
+					 <option value="2:00 PM">14:00</option>
+					 <option value="3:00 PM">15:00</option>
+					 <option value="4:00 PM">16:00</option>
+					 <option value="5:00 PM">17:00</option>
+					 <!-- Add more options for each time slot -->
+				   </select>
+				   
+				   <label for="to-time">To:</label>
+				   <select id="to-time" name="to-time" required>
+					 <option value="">Select time slot</option>
+					 <option value="10:00 AM">10:00</option>
+					 <option value="11:00 AM">11:00</option>
+					 <option value="12:00 PM">12:00</option>
+					 <option value="1:00 PM">13:00</option>
+					 <option value="2:00 PM">14:00</option>
+					 <option value="3:00 PM">15:00</option>
+					 <option value="4:00 PM">16:00</option>
+					 <option value="5:00 PM">17:00</option>
+					 <!-- Add more options for each time slot -->
+				   </select>
+				 </div>
+			   
+				   <label for="department">Department:</label>
+				   <select id="department" name="department">
+					 <option value="">Select Department</option>
+					 <option value="1">CMPN</option>
+					 <option value="2">INFT</option>
+					 <option value="3">EXTC</option>
+					 <option value="4">ETRX/EXCS</option>
+					 <option value="5">BIOM</option>
+				   </select>
+			   
+			   
+				   <!-- <input type="submit" id="button" value="Check" size="20"> -->
+				   <!--     
+				   pop up
+					-->
+				   
+					 <div class="popup">
+					   <div class="head">
+						 <div class="icon">
+						   <div class="box">
+							   <i class="uil uil-check"></i>
+						   </div>
+						 </div>
+					   </div>
+					   <div class="body">
+						 <h1>YESS</h1>
+						 <p>Faculty is available at CMPN Dept..</p>
+						 <button class="close-btn">&times; Close</button>
+					   </div>
+					 </div>
+					 <div class="center">
+					   <button class="button1" id="Check1">Check Availibility</button>
+					   <button class="button1" id="Check2"  onclick = "window.location.href='pages/new.html';">Check SLOTS</button>
+					 </div>
+				   </form>
+				   </div>
+
+		</div>
+	<!-- </section> -->
+
+	<script src="../blah/public/scripts/jquery.min.js"></script>
+  <script src="../blah/public/scripts/popper.js"></script>
+  <script src="../blah/public/scripts/bootstrap.min.js"></script>
+  <script src="../blah/public/scripts/main.js"></script>
+
+	</body>
+</html>
+
