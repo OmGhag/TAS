@@ -31,7 +31,7 @@
             
             pre[0].addEventListener('click', function(){that.preMonth(); });
             next[0].addEventListener('click', function(){that.nextMonth(); });
-            reset.addEventListener('click', function(){that.reset(); });
+            // reset.addEventListener('click', function(){that.reset(); });
         while(daysLen--) {
             days[daysLen].addEventListener('click', function(){that.clickDay(this); });
         }
@@ -175,16 +175,66 @@
 
 })(jQuery);
 
+async function rtget(){
+
+
+
 // pop-up
-const form = document.querySelector('teacher-form');
+// const form = document.querySelector('teacher-form');
 //form.addEventListener("submit",async(event))
 //const select = document.querySelector('#teacher-select');
 //const submitButton = document.querySelector('#Check1');
+const btn = document.getElementById("Check1");
+if(btn){
+    console.log("Hello");
 
-
-form.addEventListener('click', async(event) => {
     // Prevent the form from submitting
-    event.preventDefault();
+    // event.preventDefault();
+    // Get the form data
+    //const FROM_DATE =document.getElementById("#options").value;
+    const FROM_DATE = "2023-05-03";
+    // var TO_DATE =document.getElementById("options");
+    var T_CODE = document.getElementById('teacher-select');
+    var FROM_TIME = document.getElementById('from-time');
+    var TO_TIME = document.getElementById('to-time');
+    var DEPT = document.getElementById('department');
+    var tc = T_CODE.value;
+    var tT = TO_TIME.value;
+    var FT = FROM_TIME.value;
+    console.log( FROM_DATE);
+    // console.log( TO_DATE.value);
+    console.log( FROM_TIME.value);
+    console.log( TO_TIME.value);
+    console.log( T_CODE.value);
+    console(JSON.stringify({FROM_DATE,FT,tT,tc}))
+    //const DATE = document.getElementById('#date').value;
+    if (T_CODE.value == '' && T_CODE.value == 'a'){
+        warn_popup();
+    }
+    else{
+        const response =  await fetch(`http://localhost:3331/usersid`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json; charset=UTF-8"
+            },
+            body: JSON.stringify({FROM_DATE,FT,tT,tc}),
+        });
+        //const response = await fetch(`/TAS/usersid?teacher-select=${T_CODE}&from-time=${FROM_TIME}&to-time=${TO_TIME}&department=${DEPT}`);
+        const data = await response.json();
+        console.log("Hello");
+        if(data.json[0]['available']===true){
+           popup();
+        }
+        else{
+            error_popup();
+        }
+       
+    }
+}
+btn.addEventListener('click', async(event) => {
+    console.log("Hello");
+    // Prevent the form from submitting
+    // event.preventDefault();
     // Get the form data
     //const FROM_DATE =document.getElementById("#options").value;
     const FROM_DATE = "2023-05-03";
@@ -193,42 +243,40 @@ form.addEventListener('click', async(event) => {
     const FROM_TIME = document.getElementById('#from-time').value;
     const TO_TIME = document.getElementById('#to-time').value;
     const DEPT = document.getElementById('#department').value;
-
+    console.log( FROM_DATE.value);
+    console.log( TO_DATE.value);
+    console.log( FROM_TIME.value);
+    console.log( TO_TIME.value);
+    console.log( T_CODE.value);
     //const DATE = document.getElementById('#date').value;
     if (T_CODE.value == '' && T_CODE.value == 'a'){
         warn_popup();
     }
     else{
-        const response = await fetch("/TAS/:usersid", {
+        const response = await fetch(`/TAS/usersid?teacher-select=${T_CODE}&from-time=${FROM_TIME}&to-time=${TO_TIME}&department=${DEPT}`, {
             method: "GET",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json; charset=UTF-8"
             },
             body: JSON.stringify({FROM_DATE,TO_DATE,FROM_TIME,TO_TIME,T_CODE}),
         });
+        //const response = await fetch(`/TAS/usersid?teacher-select=${T_CODE}&from-time=${FROM_TIME}&to-time=${TO_TIME}&department=${DEPT}`);
         const data = await response.json();
-        if(data.json[0]['available']===true)
-        popup();
-        else
-        error_popup();
+        console.log("Hello");
+        if(data.json[0]['available']===true){
+           popup();
+        }
+        else{
+            error_popup();
+        }
+       
     }
 });
     
-    // Check if a value is selected in the select element
-    /*if (T_CODE.value !== '' && T_CODE.value !== 'a') {
-      // Execute the popup function
-      if(data.json[0]['available']===true)
-      popup();
-      else
-      error_popup();
-    } else {
-      // Do nothing
-      warn_popup();
-    }
-  });*/
+}
 
 function popup(){
-    //if condition for available is tru then run this pop up
+    //if condition for available is true then run this pop up
     {
     swal({
         title: "Yes!",
