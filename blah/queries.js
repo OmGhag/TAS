@@ -24,13 +24,13 @@ const getUsers = (request, response) => {
     })
   }
   const getUserById = (request, response) => {
-    const { FROM_DATE, TO_DATE , FROM_TIME, TO_TIME, T_CODE } = request.body;
+    const { FROM_DATE, FT, tT, tc } = request.body;
     const d = new Date(FROM_DATE);
-    const tablename = T_CODE + "_" + weekday[d.getDay()];
-    
-    const query = `SELECT * FROM ${tablename} WHERE FROM_TIME>=$1 AND TO_TIME<=$2`;
-  
-    pool.query(query, [FROM_TIME, TO_TIME], (error, results) => {
+    const tablename = tc + "_" + weekday[d.getDay()];
+
+    const query = `SELECT * FROM ${tablename} WHERE FROM_TIME>= ${FT} AND TO_TIME<= ${tT}`;
+    console.log(query);
+    pool.query(query, (error, results) => {
       if (error) {
         throw error;
       }
