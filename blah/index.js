@@ -6,7 +6,7 @@ var multer = require('multer')
 var upload = multer()
 const app = express()
 const db = require('./queries')
-const port = 5500
+const port = 3331
 
 app.use(bodyParser.json())
 app.use(
@@ -32,7 +32,7 @@ router.get('/TAS/usersid', function (req,res,next) {
 })
 app.get('/users', db.getUsers)
 app.use(express.json());
-app.get('/TAS/usersid', db.getUserById)
+app.get('/usersid', db.getUserById)
 app.post('/usersin', db.createUser)
 app.put('/usersup', db.updateUser)
 app.delete('/usersdl', db.deleteUser)
